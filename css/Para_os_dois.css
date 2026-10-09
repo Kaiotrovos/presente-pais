@@ -1,0 +1,343 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: #080808;
+    color: #f5e9d2;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+button {
+    font: inherit;
+}
+
+.tela-inicial {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 70px 24px;
+    background:
+        radial-gradient(
+            ellipse at center,
+            #292015 0%,
+            #100e0b 48%,
+            #050505 100%
+        );
+}
+
+.estrelas {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.conteudo {
+    width: 100%;
+    max-width: 760px;
+    text-align: center;
+    animation: aparecer 1.5s ease both;
+}
+
+.subtitulo {
+    color: #c6a568;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 5px;
+    line-height: 1.8;
+    margin-bottom: 28px;
+}
+
+h1 {
+    color: #f6e5bd;
+    font-size: clamp(42px, 8vw, 76px);
+    font-weight: normal;
+    line-height: 1.15;
+    margin-bottom: 25px;
+    text-shadow: 0 0 30px #c5a05b33;
+}
+
+.mensagem {
+    max-width: 540px;
+    margin: 0 auto 38px;
+    color: #c9c0b2;
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+#botaoSurpresa {
+    display: inline-block;
+    max-width: 100%;
+    padding: 16px 28px;
+    border: 1px solid #b99a5b;
+    border-radius: 40px;
+    background: transparent;
+    color: #ead4a0;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+#botaoSurpresa:hover {
+    background: #b99a5b;
+    color: #100e0b;
+    box-shadow: 0 0 30px #b99a5b44;
+    transform: translateY(-3px);
+}
+
+#botaoSurpresa:focus-visible {
+    outline: 2px solid #f6e5bd;
+    outline-offset: 5px;
+}
+
+#botaoSurpresa:disabled {
+    cursor: default;
+    opacity: 0.8;
+    transform: none;
+}
+
+.rodape {
+    margin-top: 55px;
+    color: #817564;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.estrela {
+    position: absolute;
+    display: block;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #f4d99b;
+    box-shadow: 0 0 10px #e9c777;
+    animation: brilhar 3s infinite alternate;
+}
+
+.carta {
+    width: 100%;
+    margin: 45px auto 0;
+    padding: 35px;
+    border: 1px solid #b99a5b66;
+    border-radius: 16px;
+    background: rgb(23, 19, 15, 0.96);
+    text-align: left;
+    box-shadow: 0 15px 60px #00000033;
+}
+
+.carta h2 {
+    margin-bottom: 28px;
+    color: #e8cd91;
+    font-size: clamp(24px, 5vw, 32px);
+    font-weight: normal;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.carta p {
+    margin-bottom: 20px;
+    color: #d4c9b8;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.carta .assinatura {
+    margin-top: 32px;
+    margin-bottom: 0;
+    color: #e8cd91;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 19px;
+    text-align: center;
+}
+
+.escondida {
+    display: none;
+}
+
+.carta.visivel {
+    display: block;
+    animation: aparecer 1.2s ease both;
+}
+
+@keyframes brilhar {
+    from {
+        opacity: 0.2;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .tela-inicial {
+        padding: 55px 20px;
+    }
+
+    .subtitulo {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .mensagem {
+        font-size: 15px;
+    }
+
+    #botaoSurpresa {
+        padding: 15px 20px;
+        font-size: 14px;
+    }
+
+    .carta {
+        padding: 24px 20px;
+    }
+
+    .carta p {
+        font-size: 15px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* Carta e galeria lado a lado */
+.memorias-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: 28px;
+    align-items: start;
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+/* Evita margens que atrapalham o alinhamento */
+.memorias-layout .carta,
+.memorias-layout .galeria {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Organiza as fotos em uma coluna */
+.memorias-layout .fotos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+}
+
+/* Reduz o tamanho das fotografias */
+.memorias-layout .foto {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.memorias-layout .foto img {
+    display: block;
+    width: 100%;
+    height: 260px;
+    aspect-ratio: auto;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Ajuste para celulares */
+@media (max-width: 760px) {
+    .memorias-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .memorias-layout .foto img {
+        height: auto;
+        aspect-ratio: 4 / 3;
+    }
+}
+
+
+.botao-mae {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 28px;
+    background-color: #d6336c;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: 0.3s ease;
+}
+
+.botao-mae:hover {
+    background-color: #9c0f91;
+    transform: scale(1.05);
+}
+
+
+.botao-pai {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding: 12px 28px;
+    background-color: #00ff00;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: 0.3s ease;
+}
+
+.botao-pai:hover {
+    background-color: #0f7501;
+    transform: scale(1.05);
+}
